@@ -8,13 +8,6 @@
   "assignees": ["r.a.vanapeldoorn", "tomkuipers", "p.i.m.schrama"],
   "regexManagers": [
     {
-      "fileMatch": ["config/base/.+\\.yaml$"],
-      "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "helm"
-    },
-    {
       "fileMatch": ["\\.gitlab-ci\\.yml$"],
       "matchStrings": ["# renovate: depName=(?<depName>.*?)\n\\s.*?_VERSION:.(?<currentValue>.*)\n"],
       "datasourceTemplate": "github-releases"
