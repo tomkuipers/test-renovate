@@ -7,7 +7,7 @@ validate:
     # renovate: depName=kubernetes-sigs/kustomize
     KUSTOMIZE_VERSION: v4.1.3
     # renovate: depName=instrumenta/kubeval
-    KUBEVAL_VERSION: v0.16.0
+    KUBEVAL_VERSION: v0.16.1
   before_script:
     # install defaults
     - apk add --no-cache ca-certificates curl bash tar jq git
