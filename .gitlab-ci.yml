@@ -5,7 +5,7 @@ validate:
     # renovate: depName=mikefarah/yq
     YQ_VERSION: v4.11.0
     # renovate: depName=kubernetes-sigs/kustomize
-    KUSTOMIZE_VERSION: v4.1.3
+    KUSTOMIZE_VERSION: v4.4.0
     # renovate: depName=instrumenta/kubeval
     KUBEVAL_VERSION: v0.16.1
   before_script:
