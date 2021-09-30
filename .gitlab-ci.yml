@@ -1,0 +1,40 @@
+---
+validate:
+  image: alpine:3.14.2
+  variables:
+    # renovate: depName=mikefarah/yq
+    YQ_VERSION: v4.13.2
+    # renovate: depName=kubernetes-sigs/kustomize
+    KUSTOMIZE_VERSION: kustomize/v4.1.3
+    # renovate: depName=instrumenta/kubeval
+    KUBEVAL_VERSION: v0.16.1
+  before_script:
+    # install defaults
+    - apk add --no-cache ca-certificates curl bash tar jq git
+
+    # install yq
+    - curl -sL https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 -o /usr/local/bin/yq
+    - chmod +x /usr/local/bin/yq
+    - yq --version
+
+    # kustomize
+    - KUSTOMIZE_VERSION_UNDERSCORE=$(echo $KUSTOMIZE_VERSION | tr '/' '_')
+    - curl -sL https://github.com/kubernetes-sigs/kustomize/releases/download/${KUSTOMIZE_VERSION}/${KUSTOMIZE_VERSION_UNDERSCORE}_linux_amd64.tar.gz |
+      tar xz --directory /usr/local/bin
+    - chmod +x /usr/local/bin/kustomize
+    - kustomize version
+
+    # kubeval
+    - curl -sL https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz |
+      tar xz --directory /usr/local/bin
+    - chmod +x /usr/local/bin/kubeval
+    - kubeval --version
+
+  script:
+    # validate
+    - ./scripts/validate.sh
+    
+include:
+  - project: 'open-source/gitlab-ci-templates'
+    ref: master
+    file: '/renovate-validator/.gitlab-ci-renovate-validator.yml'
