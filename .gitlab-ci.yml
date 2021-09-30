@@ -33,8 +33,3 @@ validate:
   script:
     # validate
     - ./scripts/validate.sh
-    
-include:
-  - project: 'open-source/gitlab-ci-templates'
-    ref: master
-    file: '/renovate-validator/.gitlab-ci-renovate-validator.yml'
