@@ -1,6 +1,6 @@
 ---
 validate:
-  image: alpine:3.13.0
+  image: alpine:3.14.2
   variables:
     # renovate: depName=mikefarah/yq
     YQ_VERSION: v4.11.0
